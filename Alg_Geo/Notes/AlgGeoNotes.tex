@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+
+\title{Algebraic Geometry}
+\author{Aniruddh V.}
+\date{Fall 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction} Algebraic Geometry seeks to understand the connections between algebra and geometry - more specifically how algebraic properties of systems of polynomial equations affect
+the geometry of solutions to these polynomials. For example, the polynomial $x^2 + y^2 = 1$ defines a circle, and is smooth, while the polynomial $y^2 - x^3 = 0$ is not smooth. How can the 
+algebra of these polynomials help us determine these properties? \\
+
+\section{The Main Characters}
+To do algebraic geometry properly, we need to develop a little bit more algebra. We start by introducing the main characters/objetcs that will be of use to us. Throughout these notes, 
+$k$ will be a field, typically $\mathbb{R}$ or \(\mathbb{C}\). 
+
+
+\subsection{Affine Space}
+\begin{definition}
+    \textbf{Affine Space:} \text{Fix a field} \(k\). \text{The set} \[ \mathbb{A}^n = k^n = \{ (a_1, a_2, \ldots, a_n) : a_i \in k \} \] \text{is called \textbf{n-dimensional affine space}. We denote
+    affine space} \( \mathbb{A}^n \)
+\end{definition}
+
+\begin{definition}
+    \textbf{Polynomial:} A polynomial in $x_1 \ldots x_n$ over $k$ is a finite sum \[ f = \sum_{\alpha = (\alpha_1, \ldots , \alpha_n )} c_\alpha x_1 ^{\alpha_1} x_2^{\alpha_2} \ldots x_n ^{\alpha_n} \] with \(\alpha_i \in k\). 
+    The \textbf{degree} of $f$ is given by \( \deg f = \max \{\alpha_1 + \alpha_2 + \ldots + \alpha_n\ : c_\alpha \neq 0 \}\)
+
+\end{definition}
+
+We denote the ring of polynomials over a  field $k$ by $k[x_1, x_2, \ldots, x_n]$. Polynomials define a function $f: \mathbb{A}^n \to k$ by evaluating the polynomial at points \( P = (a_1, a_2, \ldots, a_n)\)
+in affine space. \\
+
+Given a polynomial $f$, we can define interesting subsets of affine space in the following way:
+
+\begin{definition}
+    \textbf{Vanishing of f:} Given a polynomial \(f \in k[x_1, x_2 \ldots ,x_n]\) define the \textbf{vanishing set of f} as
+    \[ V(f) = \{  P \in \mathbb{A}^n : f(P) = 0      \} \] 
+    \( V(f) \) is called a \textbf{hypersurface}
+\end{definition}
+
+The vanihsing of a set of polynomials can be defined in a similar way
+\begin{definition}
+    \textbf{Vanishing of a set S:} Given a set \( S \subset k[x_1, x_2, \ldots, x_n]\), define $V(S)$ by 
+    \[ V(S) = \{P \in \mathbb{A}^n : f(P) = 0 \forall f \in S\} \] or equivalently
+    \[  V(S) = \bigcap_{f \in S} V(f)\]
+\end{definition} Such a set $V(S)$ is called an \textbf{affine algebraic set}, and is commonly referred to as an \textbf{algebraic set}
+
+\begin{exmp}
+    Let \(S = \{f_1 = y-x^2, f_2 = y-2\}\). Then \(V(S) = { (-\sqrt{2}, 2), (\sqrt{2}, 2)  }\)
+\end{exmp}
+
+\begin{exmp}
+    Let \(S = \{f_1 = y - x^2, f_2 = y+1\}\). Then depending on the field we are working in, $V(S)$ might differ! If our underlying field is $\mathbb{R}$, then $V(S) = \emptyset$,
+    but if the underlying field is $\mathbb{C}$, then $V(S) = \{ (i, -1), (-i, 1)\}$
+\end{exmp}
+The above exmaple highligts the importance of clarifying the field we are working over. $\mathbb{C}$ feels "nicer" to work over, since we have "more points to work with". The next definition
+makes this formal
+
+\begin{definition}
+    \textbf{Algebraically closed fields:} A field $k$ is \textbf{algebraically closed} if every non-constant polynomial in $k[x]$ has a solution in $k$. Equivalently, every polynomial $f$ can be 
+    factored into linear factors such that
+    \[ f = \prod (x-r_1)(x-r_2) \cdots (x-r_n)\] with $r_i \in k$
+
+
+\end{definition}    
+
+This explains why $\mathbb{C}$ is much nicer to work over than $\mathbb{R}$! By the Fundamental Theorem of Algebra, $\mathbb{C}$ is algebraically closed, while $\mathbb{R}$ is not 
+algebraically closed since $x^2+1$ has no roots in $\mathbb{R}$
+
+\begin{prop}
+    If $S \subset \mathbb{A}^1$ is algebraic, then $S$ is finite, $S = \emptyset$, or $S = \mathbb{A}^1$
+\end{prop}
+
+\begin{prop}
+    Here are some nice results about unions and intersections of algebraic sets: \\
+    Arbitrary intersections of algebraic sets are algebraic: \[ \bigcap_{i \in \mathcal{I}} V(S_i)  = V(\bigcup S_i)\] \\
+    Finite unions of algebraic sets are algebraic: \[ \bigcup_{i=1}^N S_i = V(\{ \prod_{i=1}^N f_i : f_i \in S_i  \})\]
+\end{prop}
+
+\subsection{Ideals}
+
+We start by defining ideals.
+\begin{definition}
+    \textbf{Ideal:} Let $R$ be a commutative ring. An \textbf{ideal} $I \subset R$ is a subset satisfying:
+    \begin{itemize}
+        \item $I$ is closed under addition - \(\text{for all } f, g \in I, f+g \in I\)
+        \item for any $r \in R$ and $i \in I$, $ra \in I$
+    \end{itemize}
+\end{definition}
+
+\begin{exmp}
+Let \( S \subset k[x_1, \ldots, x_n]\). The \textbf{ideal generated by $S$}, denoted $\langle S \rangle$ is the set of all finite sums of the form
+\[ \langle S \rangle = \sum_i h_i s_i \] where \( h_i \in k[x_1, \ldots, x_n]  \) and \( s_i \in S\).
+\end{exmp}
+
+\begin{prop}
+    Let $S  \subset k[x_1, \ldots, x_n]$, and $I = \langle S \rangle$. Then $V(S) = V(I)$
+\end{prop}
+\begin{proof}
+Certainly $V(I) \subset V(S)$, since $S \subset I$. Suppose $P \in V(S)$. Then $f(P) = 0$ for all $f \in I$, so $V(S) \subset V(I)$. Thus $V(I) = V(S)$
+\end{proof}
+This tells us that every algebraic set is $V(I)$ for some ideal $I \subset k[x_1, \ldots, x_n]$. \\
+
+So far, we have an operation $V(S)$ that takes a collection of polynomials and defines a subset of affine space. We can also go the other way - starting with a subset of affine space
+and producing a collection of polynomials.
+
+\begin{definition}
+    Given a subset $X \subset \mathbb{A}^n$, define \[ I(x) = \{ f \in k[x_1, \ldots, x_n] : f(P) = 0 \text{ for all } P \in X\}\]
+
+
+\end{definition}
+
+\begin{lemma}
+    Let $X \subset \mathbb{A}^n$. Then $I(X) \subset k[x_1, \ldots, x_n]$ is an ideal.
+\end{lemma}
+\begin{proof}
+If $f, g  \in I(x)$, then for all $P \in \mathbb{A}^n$, \( (f+g)(P) = f(P) + g(P) = 0 \) so $f + g \in I(x)$ as well. If $h \in k[x_1, \ldots , x_n]$, then for all $P \in \mathbb{A}^n$,
+\( (hf)(P) = h(P)f(P) = 0 \) so $hf \in I(X)$ as well. Thus, $I(X)$ is an ideal.
+
+\end{proof}
+
+\begin{exmp}
+    Let $X = \{(1, 2)\} \subset \mathbb{A}^2$. Then $I(X) = \langle x-1, y-2 \rangle$
+\end{exmp}
+    
+\begin{exmp}
+    Let $X = \{ (a, 0) : a \in \mathbb{Z} \} \subset \mathbb{A}^2$. Then $I(X) = \langle y \rangle$
+\end{exmp}
+
+\begin{exmp}
+    \( I(\emptyset) = k[x_1, \ldots, x_n]\)
+\end{exmp}
+
+\begin{exmp}
+    \( I(\mathbb{A}^n) = \langle 0 \rangle \)
+\end{exmp}
+
+\begin{lemma}
+    If $X$ is an algebraic set, then $V(I(X)) = X$
+\end{lemma}
+\begin{proof}
+    $X \subset V(I(X))$, since every point in $X$ will vanish in the ideal generated by polynomials vanishing on $X$. Since $X$ is algebraic, it can be written as  $V(S)$ for some 
+    $S \subset k[x_1, \ldots, x_n]$. The set $S$ must be a subset of $I(X)$, so $V(I(X)) \subset V(S) = X$, so $V(I(X)) = X$ 
+\end{proof} This is a neat result! A natural question to ask after this is if we can make a similar statement for $I(V(J))$, for $J \subset k[x_1, \ldots x_n]$ an ideal. Unfortunately,|
+the answer is no. For example, consider the ideal $J = \langle x^2 \rangle \subset k[x]$. Then $V(J) = \{ 0 \}$, but $I(V(J)) = \langle x \rangle \neq J$! The issue here was that one polynomial
+was a power of the other. The \textbf{Nullstellensatz} says this is the only possible issue we can come across in this situation. To state the Nullstellensatz, we need a few more definitions.
+
+\begin{definition}
+    \textbf{Radical Ideals: } An ideal $I$ is \textbf{radical} if $f^r \in I \implies f \in I$
+\end{definition}
+
+\begin{lemma}
+    $I(X)$ is radical for $X \subset \mathbb{A}^n$
+\end{lemma}
+
+\begin{proof}
+    Suppose $f^r \in I(X)$. Then $f^r(P) = 0 \text{ for all } P \in X \implies f(P) = 0 \text{ for all } P \in X$. So $f \in I(X)$ as well.
+\end{proof}
+
+\begin{definition}
+    \textbf{Radical of an Ideal: } Let $I \subset R$ be an ideal. The \textbf{radical} of $I$, denoted $\sqrt{I}$ is 
+    \[ \sqrt{I} = \{ f \in R : f^n \in I \text{ for some $n$} \} \]
+\end{definition}
+
+\begin{lemma}
+    If $I \subset R$ is an ideal, then $\sqrt{I}$ is also an ideal. 
+\end{lemma}
+
+\begin{proof}
+    Let $f,g \in \sqrt{I}$. By the definition of $\sqrt{I}$, there are $n, m$ such that $f^n \in I$ and 
+    $g^m \in I$. We want to show $f + g \in \sqrt{I}$, or equivalently, $(f+g)^r \in I$ for some $r$. Suppose $r = n+m$.
+    Then, by the binomial formula:
+
+    \begin{align*}
+        (f+g)^{n+m}  &= \sum_{k=0}^{n+m} {n+m \choose k} f^{n+m-k}g^k \\
+                &= f^{n+m} + (n+m)f^{n+m-1}g + \cdots 
+    \end{align*}
+    
+\end{proof}
+
+\end{document}
