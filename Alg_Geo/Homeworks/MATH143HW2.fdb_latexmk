@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1693634585 "c:/Users/anixl/Documents/school/math/Alg_Geo/Homeworks/MATH143HW2.tex" "MATH143HW2.pdf" "MATH143HW2" 1693634586 0
-  "MATH143HW2.aux" 1693634586 517 e1869c18ee55e8889d8197b98181b070 "pdflatex"
-  "MATH143HW2.tex" 1693634584 6632 72a314a0897244fd98fb57b7dac676e0 ""
-  "c:/Users/anixl/Documents/school/math/Alg_Geo/Homeworks/MATH143HW2.tex" 1693634584 6632 72a314a0897244fd98fb57b7dac676e0 ""
+["pdflatex"] 1693690326 "c:/Users/anixl/Documents/school/math/Alg_Geo/Homeworks/MATH143HW2.tex" "MATH143HW2.pdf" "MATH143HW2" 1693690328 0
+  "MATH143HW2.aux" 1693690328 517 6c8868896056de2a855b468936e3adfb "pdflatex"
+  "MATH143HW2.tex" 1693690323 6752 1d52f4ca1a5373f4afe28cef8e3b186d ""
+  "c:/Users/anixl/Documents/school/math/Alg_Geo/Homeworks/MATH143HW2.tex" 1693690323 6752 1d52f4ca1a5373f4afe28cef8e3b186d ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1693256205 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1693253047 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1693253047 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -40,6 +40,8 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1693253048 31764 459c573c03a4949a528c2cc7f557e217 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1693253048 34694 870c211f62cb72718a00e353f14f254d ""
   "c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1693258776 71627 94eb9990bed73c364d7f53f960cc8c5b ""
+  "c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty" 1693257148 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
+  "c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty" 1693257148 1057 525c2192b5febbd8c1f662c9468335bb ""
   "c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex" 1693259527 1016 1c2b89187d12a2768764b83b4945667c ""
   "c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex" 1693259527 43820 1fef971b75380574ab35a0d37fd92608 ""
   "c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex" 1693259527 19324 f4e4c6403dd0f1605fd20ed22fa79dea ""
@@ -113,6 +115,7 @@
   "c:/texlive/2023/texmf-dist/tex/latex/base/article.cls" 1693257635 20144 fbcf51733730d8f1a62143512ff5b1fe ""
   "c:/texlive/2023/texmf-dist/tex/latex/base/size10.clo" 1693257635 8448 74078c4a887f2cdcd57c3ec111622740 ""
   "c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1693255662 13886 d1306dcf79a944f6988e688c1785f9ce ""
+  "c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty" 1693256432 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1693256648 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1693256648 1224 978390e9c2234eab29404bc21b268d1e ""
   "c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def" 1693256649 19448 1e988b341dda20961a6b931bcde55519 ""

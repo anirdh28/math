@@ -169,6 +169,12 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./MATH143HW2.aux

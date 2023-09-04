@@ -1,0 +1,57 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 113 Homework 1}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{Solution} Claim: $A \cap B = A \setminus B^c$.
+\begin{proof}
+Let $x \in A \cap B$. Then $x \in A$ and $x \in B$, so $x \not\in B^c$. But then $x \in A$ and $x \not\in B^c$, so $x \in A \setminus B^c$. Thus $A \cap B \subseteq A \setminus B^c$. 
+On the other hand, let $x \in A \setminus B^c$. Then $x \in A$ and $x \not\in B^c$, so $x \in A$ and $x \in B$, and thus $x \in A \cap B$. So $A \setminus B^c \subseteq A \cap B$. But
+then $A \cap B = A \setminus B^c$
+\end{proof}
+
+
+
+\section{Problem 2}
+\textbf{Solution } Suppose $f_\rho = f_\sigma$. Then $f_\rho$ and $f_\sigma$ have the same domains, codomains, and assignments. In particular, for all $x_1, \ldots, x_n \in X_1, \ldots X_n$,
+$f_rho(x_1, \ldots, x_n) = f_\sigma(x_1, \ldots, x_n) = y$. By the definition of $f_\sigma$ and $f_\rho$, this means that the relations $\sigma(x_1, \ldots, x_n, y)$ and $\rho(x_1, \ldots, x_n, y)$
+both hold, so the relations $\rho$ and $\sigma$ are equipotent. \\
+On the other hand, suppose $\sigma$ and $\rho$ are equipotent. Then $\sigma(x_1, \ldots, x_n, y)$ holds exactly when $\rho(x_1, \ldots, x_n, y)$ holds. But this means that for all $x_1, \ldots, x_n \in X_1, \ldots X_n$,
+$f_rho(x_1, \ldots, x_n) = f_\sigma(x_1, \ldots, x_n) = y$. Then $f_\rho$ and $f_\sigma$ have the same domains, codomains, and targets, and thus $f_\rho = f_\sigma$. Therefore, $f_\rho = f_\sigma$ if 
+and only if $\rho$ and $\sigma$ are equipotent.
+
+
+\section{Problem 3}
+
+\textbf{Solution } Suppose $x = x'$ and $y = y'$. Then clearly $\{ \{x\}, \{x, y\} \} = \{ \{x'\}, \{x', y'\} \}$. On the other hand, if $\{ \{x\}, \{x, y\}\}  = \{ \{x'\}, \{x', y'\} \}$,
+then by definition $x = x'$ and $y = y'$, since the ordered pairs $(x_1, \ldots, x_m)$ and $(y_1, \ldots, y_n)$ are equal if and only if $n = m$ and $x_i = y_i$ for $i = 1, \ldots, n$. In this case,
+our ordered pair consists of two elements, one of which is an ordered pair itself. Thus they are equal if $x = x'$ and $y = y'$, so $\{ \{x\}, \{x, y\} \} = \{ \{x'\}, \{x', y'\} \}$ if and only if 
+$x = x'$ and $y = y'$.
+\end{document}

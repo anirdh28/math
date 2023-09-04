@@ -4,6 +4,14 @@
 \usepackage{tikz}
 \usepackage{quiver}
 \usepackage{mathtools}
+\usepackage{geometry}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
 
 \title{Math 143 Homework 2}
 \author{Aniruddh V.}
@@ -33,7 +41,7 @@ Clearly, $\phi$ is surjecrtive. We claim $\ker \phi = \langle y -x^2 \rangle$. C
 If $f \in \ker \phi$, then $f(x, x^2) = 0$, so $y - x^2$ divides $f$ and $\langle y - x^2 \rangle \supset \ker \phi$. Thus $\langle y - x^2 \rangle = \ker \phi$. Then, since $\phi$ is surjective,
 by the first isomorphism theorem, $k[x, y] / \langle y - x^2 \rangle \cong k[x]$. $k[x]$ is an integral domain, since if $f(x)g(x) = 0$, then either $f(x) = 0$ or $g(x) = 0$, since $k$ is a field. 
 Thus $k[x, y] / \langle y - x^2 \rangle$ is an integral domain, so $\langle y - x^2 \rangle$ is prime, and thus $V(y - x^2)$ is irreducible. \\
-\textbf{b. } \textbf{Solution } Starting with $V(y^4 - x^2, y^4 - x^2y^2 + xy^2 -x^3)$, factoring each polynomial gives $V \left(  (y^2-x)(y^2+x), (y^2+x)(y-x)(y+x)   \right)$. 
+\textbf{b. } \textbf{Solution } Starting with $V(y^4 - x^2, y^4 - x^2y^2 + xy^2 -x^3)$, factoring each polynomial gives \\ $V \left(  (y^2-x)(y^2+x), (y^2+x)(y-x)(y+x)   \right)$. 
 The $y^2 + x$ is common in both terms, and taking the points where $y^2 - x$, $y-x$, and $y+x$ vanish gives the set with two points $\{(1, 1), (1, -1)\}$. Then the decomposition becomes
 $ V(y^4 - x^2, y^4 - x^2y^2 + xy^2 -x^3) = V(y^2 + x) \cup V((1, 1)) \cup V((1, -1)) $, where $V(y^2 + x)$ is irreducible by part \textbf{a}. 
 

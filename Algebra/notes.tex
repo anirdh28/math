@@ -1,10 +1,18 @@
 \documentclass{report}
+
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz}
 \usepackage{quiver}
-\usepackage{amsthm}
+\usepackage{mathtools}
 \usepackage{geometry}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
 
 \newgeometry{
     top=0.75in,
@@ -13,23 +21,11 @@
     inner=0.75in
 }
 
-
-
-\newtheorem{definition}{Definition}[section]
-\newtheorem{exmp}{Example}[section]
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{rmk}{Remark}[section]
-\newtheorem{lemma}{Lemma}[section]
-
-
-\title{Algebraic Geometry}
 \author{Aniruddh V.}
-\date{Fall 2023}
+\title{Algebra}
 
 \begin{document}
 
-\maketitle
-
-\include{chap0algebrareview.tex}
+\include{ch1groups.tex}
 
 \end{document}
