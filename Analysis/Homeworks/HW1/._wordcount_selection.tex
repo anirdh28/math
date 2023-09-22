@@ -1,0 +1,12 @@
+\section{Problem 20}
+
+\textbf{Solution } Suppose $\rho \in \text{Rel}_2(X)$ and $\rho \implies \leq$. This means that if $\rho(x, x')$, then $\langle x \rvert \subseteq \langle x' \rvert$. Clearly 
+$\langle x \rvert \subseteq \langle x \rvert$, so $\rho(x, x)$ must hold, and $\rho$ must be reflexive. Next, if $\langle x \rvert \subseteq \langle x' \rvert$ and $\langle x' \rvert \subseteq \langle x'' \rvert$,
+then $\langle x \rvert \subseteq \langle x'' \rvert$, so $\rho(x, x'), \rho(x', x'' ) \implies \rho(x, x'')$, and so $\rho$ is transitive. Finally, $\rho$ must be weakly antisymmetric, since if 
+$\langle x \rvert \subseteq \langle x' \rvert$ and $\langle x' \rvert \subseteq \langle x \rvert$, then $\langle x \rvert = \langle x' \rvert$. Thus $\rho$ must be an order relation.
+
+
+\section{Problem 21}
+
+\textbf{Solution } Suppose $\rho \in \text{Rel}_2(X)$ and $\leq \implies \rho$. This means that if $\langle x \rvert \subseteq \langle x' \rvert$, then $\rho(x, x')$ holds. But $\subseteq$ is an
+order relation, so then $\rho$ must also be an order relation.

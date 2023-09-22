@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 143 Homework 3}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{a. } \textbf{Solution } Let $R$ be a ring, $I \subset R$ an ideal, and $\pi: R \to R / I$ be the canonical projection map which maps every element $r \in R$ to 
+its coset $r + I \in R / I$.  Also let $I \subseteq J \subseteq R$ be an ideal containing $I$. Then the image $\pi(J)$ is an ideal of $R / I$, since if $(a + I), (b+I) \in \pi(J)$,
+with $a, b \in J$, then $a + b \in J$ so $(a+I) + (b+I) = (a+b) + I = \pi(a+b) \in \pi(J)$ as well. Furthermore, if $(a + I) \in \pi(J)$ and $(r+I) \in R / I$, with $a \in J$ and $r \in R$, 
+then $(a+I)(r+I) = (ar + I)\in \pi(J)$, since $ar \in J$ because $J$ is an ideal. Thus $\pi (J)$ is an ideal in $R / I$.
+
+Next, if $K$ is an ideal in $R / I$, then $\pi^{-1}(K)$ is an ideal in $R$ containing $I$. First, since $K$ is an ideal of $R / I$, it contains the coset $0 + I$, and for all
+$a \in I$, $\pi(a) = a + I = 0 + I \in K$, so $a \in  \pi^{-1}(K)$. Thus $\pi^{-1}(K) \supseteq I$. Next, if $a, b \in \pi^{-1}(K)$, then so is $a + b$, since $\pi(a + b) = ((a+b) + I ) = (a + I) + (b + I) \in K$ 
+since $K$ is an ideal. If $r \in R$, and $x \in \pi^{-1}(K)$, then $\pi(x) \in K$, so $\pi(as) = \pi(a)\pi(s)  \in K$ as well since $K$ is an ideal. Thus $\pi^{-1}(K)$ is an ideal as well.  
+
+Now to show the bijection, it suffices to show that $ \pi^{-1} \circ \pi$ and $\pi \circ \pi^{-1}$ are both the identity. Since $\pi$ is surjective, $\pi(\pi^{-1}(X)) = X$ for any ideal
+of $R / I$. On the other hand, $X \subseteq \pi^{-1}(\pi(X))$ for any subset $X$, so certainly it holds for any ideal. Now let $a \in  \pi^{-1}(\pi(X))$ for an ideal $X \subset R$. Then,
+Then $\pi(a) = \pi(X)$, and there is some $x \in X$ such that $\pi(a) = \pi(x)$, so $\pi(a) - \pi(x) = \pi(a-x) = 0 + I$, so $a - x \in \ker(\pi) = I$. Thus $a -x \in I \subset X$, and $x \in X$
+so $a = (a - x) + x \in X$. Thus $\pi^{-1}(\pi(X)) = X$ and $\pi^{-1} \circ \pi = \pi \circ \pi^{-1} = \text{id}$. This shows there is a bijection between ideals of $R / I$ and ideals of $R$ containing $I$. \\
+
+\textbf{b. } \textbf{Solution } By \textbf{a}, we have a bijective correspondence between ideals in $R / I$ and ideals in $R$ containing $I$. So all we need to check is that the image of a radical ideal 
+under $\pi : R \to R / I$ is radical, and the pre-image of a radical ideal in $R / I$ is a radical ideal in $R$. To this end, suppose $J$ is radical. Then the quotient $R / J$ is a reduced ring. Now consider $J' = J / I$. By the second isomorphism theorem,
+$ (R / I) / (J / I) \cong R / J$. By assumption, $R / J$ is a reduced ring, so then $(R / I) / (J / I)$ is reduced, and thus $J' = J / I$ is radical. On the other hand, suppose $J'$ is radical. Since $J' = J/I$, this implies
+that $(R/I)/(J/I)$ is a reduced ring. But $ (R / I) / (J / I) \cong R / J$, so $R / J$ is a reduced ring as well, and thus $J$ is radical. 
+
+\textbf{c. } \textbf{Solution } Similar to \textbf{b}, because of the bijective correspondence provided by \textbf{a}, all that needs to be shown is that the image of a maximal ideal is maximal, and that 
+the preimage of a maximal ideal is maximal as well. To this end, suppose $J \subset R$ is a maximal ideal, and consider the corresponding ideal $J' = J/I \subset R/I$. Since an ideal is maximal $J$ is maximal
+if and only if the corresponding quotient $R/J$ is a field, we have that $R/J$ is a field. But $R/J \cong (R/I)/(J/I)$, so this means that $J/I = J'$ is a maximal ideal of $R/I$ as well. Finally, if 
+$J' = J/I$ is maximal, then $(R/I)/(J/I)$ is a field. But $(R/I)/(J/I) \cong R/J$ so $J$ is a maximal ideal of $R$. 
+
+Then, if $L$ is a field, and $\phi: R \to L$ is a surjective ring homomorphism, we have $R / \ker\phi \cong L$, and since $L$ is a field, this implies that $R / \ker\phi$ is a field, and thus $\ker\phi$ is maximal. 
+
+
+
+
+\section{Problem 2}
+\textbf{a. } Let $J \subset k[x_1, \ldots x_n]$ be a radical ideal. Then $\sqrt{J} = J$. Consider a polynomial $f \in J$. Then since $\emptyset \neq I \neq k[x_1, \ldots, x_n]$,
+$f$ vanishes on finitely many points $P_1, \ldots P_m \in \mathbb{A}^n$. Consider the set
+
+\[ V(J)  = {P\in \mathbb{A}^n : \exists f \in J : f(P) = 0} \]
+
+Then $V(J)$ is the union of the singleton sets $X_n$ containing only a single point in affine space. But since $I(A \cup B) = I(A) \cap I(B)$, we have
+
+\[ I(V(J)) = \cap _{i} I(X_i)  \]
+
+Each $X_i$ contains just a single point, so by the Second Weak Nullstellensatz, every $I(X_i)$ is maximal. Furthermore, since $J$ is a radical ideal, we have $I(V(J)) = \sqrt{J} = J$, so putting 
+it all together
+
+\[ J = \cap_i I(X_i)\] Clearly $J$ is contained in each $X_i$, so a radical ideal of $k[x_1, \ldots, x_n]$ is equal to the intersection of all of the maximal ideals containing it.
+
+On the other hand, suppose $J \subset k[x_1, \ldots, x_n] $ is the intersection of all of the maximal ideals containing it. Since every maximal ideal is the ideal of a point in affine space, $J$ contains 
+all polynomials that vanish on a set of points $P_n$ in affine space. Now suppose $f^r \in J$. This means $f^r(P) = 0$, but $f^r(P) = f(P)^r $, so $f(P) = 0$ and thus $f \in J$ as well. Thus $J$ is radical,
+and an ideal $J \subset k[x_1, \ldots, x_n]$ is radical if and only if it is equal to the intersection of all of the maximal ideals containing it.
+
+\section{Problem 3}
+
+\textbf{Solution } The second equation $xz - x$ implies that either $x = 0$ or $z = 1$. If $x = 0$, then the first equation becomes $yz = 0$, which implies $y = 0$ or $z - 0$. 
+These correspond to the two sets $S_1 = V(x, y)$, which is the $z$ axis, or $S_2 = V(x, z)$, which is the $y$ axis. If $z = 1$, then the first equation becomes $x^2 - y$, which corresponds 
+to the set $S_3 = V(z-1, x^2 - y)$. 
+
+To see that $S_1, S_2$ and $S_3$, it suffices to show that their ideals are prime. The corresponding ideals are $I_1 = \langle y, z \rangle, I_2 = \langle x, z \rangle \text{ and } I_3 = \langle z-1, y^2 - x \rangle$. These
+are all prime, since $\mathbb{C}[x, y, z] / \langle y, z \cong \mathbb{C}[x]$, $\mathbb{C}[x, y, z] / \langle x, z \cong \mathbb{C}[y]$, and $\mathbb{C}[x, y, z] / \langle z-1, x^2-y \cong \mathbb{C}[x]$, which are all domains. 
+Therefore, $V(x^2 - yz, xz-x) = S-1 \cup S_2 \cup S_3$, and each $S_i$ is irreducible. 
+
+\section{Problem 4}
+
+\textbf{a. } \textbf{Solution }Let $k$ be a field, and $L$ be an extension. Let $v \in L$ such that $v$ is algebraic over $k$. Then there is a polynomial $f \in k[x]$ such that $f(v) = 0$. In other words,
+we have $v^n + a_1v^{n-1} + \cdots + a_n = 0  $. But this implies $v(v^{n-1} + \cdots) = -a_n$. Since $k$ is a field, $-a_n$ has a multiplicative inverse, so $v[-a_n^{-1}(v^{n-1} + \cdots)] = 1$.
+Thus any algebraic element $v$ has a multiplicative inverse, and the set of all algebraic elements in a field extension is itself a field. 
+
+\textbf{b. } \textbf{Solution } $R$ is already a subring of $L$, so it suffices to show that every $x \neq 0 \in R$ has a multiplicative inverse. Since $L$ is a finite extension of $k$,
+it is also a finite dimensional vector space over $k$, say of dimension $n$. Then the elements $1, v, \ldots, v^n$ with $v \in R$ are linearly dependent, so there are $a_i \in k$ such that 
+$v^n + a_1v^{n-1} + \cdots + a_n = 0  $. But this is equivalent to saying $v(v^{n-1} + \cdots) = -a_n$. Since $k$ is a field, $-a_n$ has a multiplicative inverse, so $v[-a_n^{-1}(v^{n-1} + \cdots)] = 1$
+Thus $v$ has a multiplicative inverse, and $R$ is a field.
+
+\section{Problem 5}
+\textbf{Solution } Suppose $k \subset L$ is an algebraic extension, and $L \subset L'$ is also an algebraic extension. Let $a \in L'$. Then $a$ is algebraic over $L$ so there is 
+a polynomial $f(x) \in L[x]$ such that $f(a) = 0$. Suppose $f(x) = c_0 + c_1 x +  c_2 x^2 + \cdots c_n x^n $. Each $c_i$ is in $L$ and is thus algebraic over $k$. Consider the finite (and hence algebraic) extension
+$M = k(c_0, c_1 \ldots, c_n)$. Now $f$ is a polynomial in $M[x]$ and $f(a) = 0$, so $a$ is algebraic over $M$. Now consider $M(a)$, which is a finite extension of $k$, so $a$ is algebraic over $k$, 
+and since $a$ was arbitrary, $L'$ is a finite extension of $k$ as well. 
+\end{document}

@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+
+\newcommand{\PP}{\mathcal{P}}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math H104 Homework 2}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Excerise 37} Let $X_1, X_2 \in \PP X$ with $X_1 \subseteq X_2$. Then $UX_1 = \{y \in Y | \forall x \in X_1, \rho(x, y)\} $ and $ UX_2 = \{y \in Y | \forall x \in X_2, \rho(x, y)\} $. Since 
+$X_1 \subseteq X_2$, if $x \in X_1$, then $x \in X_2$, so this implies that $UX_1 \supseteq UX_2$. Thus $U : (\PP X, \subseteq) \to (\PP Y, \supseteq)$ is a morphism of ordered sets. 
+
+Now, let $Y_1, Y_2 \in \PP Y$ with $Y_1 \supseteq Y_2$. Then $LY_1 = \{ x \in X | \forall y \in Y_1 \rho(x, y) \}$ and $LY_1 = \{ x \in X | \forall y \in Y_1 \rho(x, y) \}$. Since
+$Y_1 \supseteq Y_2$, if $y \in Y_2$, then $y \in Y_1$ as well, so this implies that $UY_1 \subseteq UY_2$. Thus $L : (\PP Y, \supseteq) \to (\PP X, \subseteq)$ is a morphism of ordered sets.
+\section{Excerise 38}
+
+Suppose $A \subseteq LB$. Then for all $x \in A$, $\rho(x, y)$ holds for all $y \in B$. But this also means that if $y \in B$, $\rho(x, y)$ holds for all $x \in A$, so $B \subseteq UA$
+Now suppose $B \subseteq UA$. Then if $y \in B$, the relation $\rho(x, y)$ holds for all $x \in A$. But this implies that if $x \in A$, the relation $\rho(x, y)$ holds for all $y \in B$, 
+so then $A \subseteq LB$. Thus $A \subseteq LB$ if and only if $UA \supseteq B$
+
+\section{Excerise 39}
+
+ $LUA$ contains all $x$ such that $\rho(x, y)$ holds for all $y \in UA$. But $y \in UA$ if and only if $\rho(x, y)$ holds for all $x \in A$, so clearly if $x \in A$, then $x \in LUA$. Thus 
+ $A \subseteq LUA$. Similarly, $ULB$ contains all $y$ such that $\rho(x, y)$ holds for all $x \in LB$. But $x \in LB$ if and only if $\rho(x, y)$ holds for all $y \in B$, so clearly if 
+ $y \in B$, then $y \in ULB$. Thus $ULB \supseteq B$
+
+\section{Excerise 40}
+
+
+Let $x \in LB$. Then for all $y \in B$, the relation $\rho(x, y)$ holds. But this means that $y \in ULB$, and hence $x \in LULB$, thus $LB \subseteq LULB$. Now let $x \in LULB$. 
+Then for all $y \in ULB$, the relation $\rho(x, y)$ holds. But $y \in ULB$ if and only if the relation $\rho(x, y)$ holds for all $x \in LB$, thus $x \in LB$ as well, and $LULB \subseteq LB$, so
+$LULB = LB$
+
+
+Now, let $y \in UA$. Then the relation $\rho(x, y)$ holds for all $x \in A$. But this means $x \in LUA$, and hence $y \in ULUA$, thus $UA \subseteq ULUA$ Now let $y \in ULUA$.
+Then for all $x \in LUA$, the relation $\rho(x, y)$ holds, But $x \in LUA$ if and only if the relation $\rho(x, y)$ holds for all $y \in UA$, thus $y \in UA$ as well, and $ULUA \subset UA$, so
+$ULUA = UA$ 
+
+\section{Excerise 41}
+
+If $A \subseteq X$, then $UA = \{ Y \in \PP X | \forall x \in A : x \in Y  \} = \{ Y \in \PP X : Y \supseteq A \}$. Similarly, if $\mathcal{A} \in \PP X $, then
+$ L \mathcal{A}  = \{ x \in X | \forall Y \in \mathcal{A} : x \in Y  \}$
+
+\section{Excerise 42}
+
+Let $A, B \subseteq \PP X$. Then $UA = {C \in \PP X : A \subseteq C}$ and $LB = {C \in \PP X : C \subseteq B}$
+
+
+\section{Excerise 43}
+
+Suppose $f, g$ is a bimorphism from $\rho$ to $\rho'$ and $f', g'$ is a bimorphism from $\rho ' \to \rho ''$. Since $f, g$ is a bimorphism, $(id_X, g)^* \rho \implies (f, id_y)^* \rho '$. Similarly
+since $f', g'$ is a bimorphism, $(id_X, g')^* \rho' \implies (f', id_Y)^* \rho ''$. But then $(id_X, g \circ g')^* \rho \rightarrow (f \circ f', id_Y)^* \rho ''$ so $f \circ f' , g \circ g'$ is a bimorphism
+from $\rho$ to $\rho ''$ 
+
+
+\section{Excerise 44}
+
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXG1hdGhjYWx7UH1cXG1hdGhjYWx7UH1YIl0sWzIsMCwiXFxtYXRoY2Fse1B9WCJdLFswLDIsIlxcbWF0aGNhbHtQfVxcbWF0aGNhbHtQfVkiXSxbMiwyLCJcXG1hdGhjYWx7UH1ZIl0sWzQsMCwiXFxtYXRoY2Fse1B9XFxtYXRoY2Fse1B9WCJdLFs2LDAsIlxcbWF0aGNhbHtQfVgiXSxbNiwyLCJcXG1hdGhjYWx7UH1ZIl0sWzQsMiwiXFxtYXRoY2Fse1B9XFxtYXRoY2Fse1B9WSJdLFswLDEsIlxcY2FwIl0sWzEsMywiZl8qIl0sWzIsMywiXFxjYXAiLDJdLFswLDIsImZfeyoqfSIsMl0sWzQsNSwiXFxjdXAiXSxbNSw2LCJmXyEiXSxbNCw3LCJmX3shKn0iLDJdLFs3LDYsIlxcY3VwIiwyXSxbOSwxMCwiXFxzdWJzZXRlcSIsMCx7ImN1cnZlIjoyLCJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzEzLDE1LCJcXHN1YnNldGVxIiwwLHsiY3VydmUiOjEsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	{\mathcal{P}\mathcal{P}X} && {\mathcal{P}X} && {\mathcal{P}\mathcal{P}X} && {\mathcal{P}X} \\
+	\\
+	{\mathcal{P}\mathcal{P}Y} && {\mathcal{P}Y} && {\mathcal{P}\mathcal{P}Y} && {\mathcal{P}Y}
+	\arrow["\cap", from=1-1, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{f_*}", from=1-3, to=3-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\cap"', from=3-1, to=3-3]
+	\arrow["{f_{**}}"', from=1-1, to=3-1]
+	\arrow["\cup", from=1-5, to=1-7]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{f_!}", from=1-7, to=3-7]
+	\arrow["{f_{!*}}"', from=1-5, to=3-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "\cup"', from=3-5, to=3-7]
+	\arrow["\subseteq", curve={height=12pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=0, to=1]
+	\arrow["\subseteq", curve={height=6pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=2, to=3]
+\end{tikzcd}\]
+
+\section{Excerise 45}
+
+Suppose $f, g$  is a bimorphism from $\rho$ to $\rho '$. This means that $(id_X, g)^* \rho \implies (f, id_y)^* \rho '$. Since $\rho^{op} (x, y) \iff 
+\rho(y, x)$, we have $(id_Y, f)^* (\rho^{op})' \implies (g, id_X)^* \rho^{op}$ which means $g, f$ is a bimorphism from $(\rho')^{op}$ to $\rho^{op}$
+
+\section{Excerise 46}
+
+Proof 1: Condition (c) of Lemme 3.1 implies $\forall x \in X \lvert f(x) \rangle \supseteq g^* \lvert x \rangle $. This implies that 
+\[ \cap_{x \in X} \lvert f(x) \rangle \supseteq \cap_{x \in X} g^* \lvert x \rangle \] which implies 
+\[ U(f_* A) \supset g^* UA \]
+
+Proof 2: Using the equivalence of statements $b$ and $b'$, we have $f^* L B' \supseteq L(g_* B')$. Then applying $L$ to both sides with $B' = UA$ gives
+$U(f_* A) \supseteq g^* UA$
+
+\section{Excerise 47}
+
+The following conditions are equivalent:
+
+
+\begin{itemize}
+    \item A pair of functions $f, g$ is a faithful bimorphism 
+    \item $\forall B' \subseteq Y' : f^* LB' = L(g_* B')$ 
+    \item $\forall A \subseteq X : U(f_* A) = g^* UA $
+\end{itemize}
+
+The second condition $\forall B' \subseteq Y' : f^* LB' = L(g_* B')$ can be expressed in the following commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwyLCJcXG1hdGhjYWx7UH1YJyJdLFsyLDIsIlxcbWF0aGNhbHtQfVgiXSxbMCwwLCJcXG1hdGhjYWx7UH1ZJyJdLFsyLDAsIlxcbWF0aGNhbHtQfVkiXSxbMiwwLCJMIiwyXSxbMiwzLCJnXyoiXSxbMywxLCJMIl0sWzAsMSwiZl4qIiwyXV0=
+\[\begin{tikzcd}
+	{\mathcal{P}Y'} && {\mathcal{P}Y} \\
+	\\
+	{\mathcal{P}X'} && {\mathcal{P}X}
+	\arrow["L"', from=1-1, to=3-1]
+	\arrow["{g_*}", from=1-1, to=1-3]
+	\arrow["L", from=1-3, to=3-3]
+	\arrow["{f^*}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+The third condition $\forall A \subseteq X : U(f_* A) = g^* UA $ can be expressed in the following commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNSxbMCwyLCJcXG1hdGhjYWx7UH1ZIl0sWzIsMiwiXFxtYXRoY2Fse1B9WSciXSxbMCwwLCJcXG1hdGhjYWx7UH1YIl0sWzIsMCwiXFxtYXRoY2Fse1B9WCciXSxbMSwyXSxbMiwwLCJVIiwyXSxbMiwzLCJmXyoiXSxbMywxLCJVIl0sWzAsMSwiZ14qIiwyXV0=
+\[\begin{tikzcd}
+	{\mathcal{P}X} && {\mathcal{P}X'} \\
+	\\
+	{\mathcal{P}Y} & {} & {\mathcal{P}Y'}
+	\arrow["U"', from=1-1, to=3-1]
+	\arrow["{f_*}", from=1-1, to=1-3]
+	\arrow["U", from=1-3, to=3-3]
+	\arrow["{g^*}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+
+
+\end{document}

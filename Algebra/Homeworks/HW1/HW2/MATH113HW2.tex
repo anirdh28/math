@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 113 Homework 2}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 16}
+Let $f: X \to Y$ be a function, and let $B \subset Y$. Then $f^*(B) = \{ x : f(x) \in B \}$, so the function $\chi_{f^* B}$ is given by:
+\[ \chi_{f^* B} = \begin{cases}
+    1 & f(x) \in B \\
+    0 & f(x) \not\in B
+    
+\end{cases}\] On the other hand, consider the function $f^* \chi_B$. This first takes the preimage of a subset $B \subset Y$, and then applies $\chi$ to that subset. This gives:
+
+\[ f^* \chi_B = \begin{cases}
+    1 & f(x) \in B \\
+    0 & f(x) \not\in B 
+\end{cases}    
+\]. So $\chi_{f^* B} = f^* \chi_B $
+
+
+\section{Exercise 17}
+
+Let $f: X \to Y$ be a function, with $A \subset X$ and $B \subset Y$. Suppose $A \subset f^*(B)$. Then, $x \in A$ implies $f(x) \in B$. This holds for all $x \in A$, so $f_*(A) \subset B$.
+On the other hand, suppose $f_*(A) \subset B$. Then for all $x \in A$, $f(x) \in B$. Then for all $x \in A$, $x \in f^*(B)$, so $A \subset f^*(B)$. 
+
+\section{Exercise 18}
+
+Let $x \in f^*(B^C)$. Then $f(x) \in B^C$, so $f(x) \not\in B$. Then $x \not\in f^*(B)$, so $x \in (f^* B)^C$. Thus $f^* (B^C) \subseteq (f^* B)^C$. On the other hand
+let $x \in (f^* B)^C$. Then $x \not\in f^* B$, so $f(x) \not\in B$. Then $f(x) \in B^C$, so $x \in f^*(B^C)$ and $(f^* B)^C \subseteq f^* (B^C)$. Therefore $f^* (B^C) = (f^* B)^C$
+
+
+\section{Exercise 21}
+
+Let $f: X \to Y$ and $g: Y \to Z$ be functions. Then $(g \circ f)_* : \mathcal{P}X \to \mathcal{P}Y$ takes a subset of $X$ to its image as a subset of $Z$. But this can also be done by first taking a subset
+of $X$ to its image under $f$, which is a subset of $Y$, and then taking the resulting subset of $Y$ to its image under $g$, which results in the same subset of $Z$. Thus $(g \circ f)_* = g_* \circ f_*$
+
+Next, consider $(g \circ f)^*$. This takes a subset of $C \subset Z$ and gives back the corresponding subset of $A \subset X$ that gets mapped to $C$ under $g \circ f$. But this can also be
+done by finding which subset $B \subset Y$ gets mapped to $C$ under $g$, and then finding the corresponding subset $A$ that gets mapped to $B$ under $f$. Thus $(g \circ f)^* = f^* \circ g^*$.
+
+Finally, consider $(g \circ f)_! $. For a subset $A \subseteq X$This is equal to $Z \setminus (g \circ f)_*(X \setminus A)$. But by the previous part, this is equivalent to 
+$ Z \ g_* (Y \setminus B) \circ Y \setminus f_*(X \setminus A)  = g_! \circ f_!$.
+
+
+\section{Exercise 23}
+
+Let $f: X \to Y$ be an invertible function. Then $f \circ f^{-1}$ and $f^{-1} \circ f$ are both the identity. Then the function $f^* : \mathcal{P}X \to \mathcal(P)Y$ assigns every subset of $X$ to 
+its image under $f$ in $Y$. The function $f^{-1}_* : \mathcal{P}X \to \mathcal(P)Y$ assigns to every subset of $A \subset X$ the subset of $B \subset Y$ such that $f^{-1}(y) \in A$ whenever $y \in B$. 
+But since $f$ is invertible, this is equivalent to saying that $B$ is the image of $A$ under $f$. Thus $f^* = f^{-1}_*$ 
+
+\section{Exercise 25}
+
+Let $\mathcal{A}$ and $\mathcal{B}$ be families of sets, with $\mathcal{A} \subset \mathcal{B}$. Suppose $x \in \cup \mathcal{A}$. Then $x \in \cup \mathcal{B}$, since $\mathcal{A} \subset \mathcal{B}$
+and thus $\cup \mathcal{A} \subset \cup \mathcal{B}$. 
+
+Now suppose $x \in \cap \mathcal{B}$. Then $x$ is in every set $I \in \mathcal{B}$, and so it is in every set in $\mathcal{A}$, and hence in $\cap \mathcal{A}$. Thus $\cap\mathcal{A} \supset \cap\mathcal{B}$.
+\section{Exercise 26}
+
+The functions from $\mathcal{P}\mathcal{P}X  $ to $\mathcal{P}\mathcal{P}Y$ are $f_{**}, f_{*!}, f_{!*}$ and $f_{!!}$.
+
+\end{document}

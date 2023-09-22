@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{leftindex}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math H104 Homework 1}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 17}
+
+\textbf{Solution } Let $\rho$ be a binary relation. Then, by definition, the binary relation $\rho^{\text{op}}$ is such that $\rho(x, y) \implies \rho^{\text{op}}(y, x)$. But then
+\[ \leftindex[I]_{\rho^{\text{op}}} {\langle \rvert} = \{x \in X | \rho^{\text{op}}(x, y) \} = \{x \in X | \rho(y, x)\} = {\lvert \rangle}_{\rho}\] and 
+\[  {\lvert \rangle}_{\rho^{\text{op}}} = \{ y \in Y | \rho^{\text{op}}(x, y) \} = \{ y \in Y | \rho(y,x )\} = \leftindex[I]_{\rho} {\langle \rvert}\]
+
+\section{Problem 18}
+
+\textbf{Solution } Consider the function ${\langle \rvert} : \text{Rel}(X, Y) \to \text{Funct}(Y, \mathcal{P}(X))$, which takes a relation $\rho(x, y)$ and maps it to the function
+$f_\rho : Y \to \mathcal{P}(X)$, which sends each $y \in Y$ to subset $A_y \subset X$ defined by $A_y = \{x \in X | \rho(x, y)\}$. Then for any $f \in \text{Funct}(Y, \mathcal{P}(X))$,
+one can define the relation $\rho_f \in \text{Rel}(X, Y)$ such that $\rho_f (x, y)$ if and only if $x \in f(y)$, or $x$ is in the subset of $X$ defined by the image of $y$. This can be done
+for any function in $\text{Funct}(Y, \mathcal{P}(X))$, so ${\langle \rvert}$ is surjective.
+
+\section{Problem 19}
+
+\textbf{Solution } Suppose $\rho \iff \sigma$. Then $\rho(x, y)$ holds exactly when $\sigma(x, y)$ holds. Then this implies $\leftindex[I]_{\rho} {\langle \rvert} = \leftindex[I]_{\sigma} {\langle \rvert}$.
+On the other hand, suppose  $\leftindex[I]_{\rho} {\langle \rvert} = \leftindex[I]_{\sigma} {\langle \rvert}$. Then, if $\rho(x, y)$ holds, so does $\sigma(x, y)$, so $\rho$ and $\sigma$ are equipotent. Thus
+$\rho \iff \sigma$ if and $\leftindex[I]_{\rho} {\langle \rvert} = \leftindex[I]_{\sigma} {\langle \rvert}$.
+
+\section{Problem 20}
+
+\textbf{Solution } Suppose $\rho \in \text{Rel}_2(X)$ and $\rho \implies \leq$. This means that if $\rho(x, x')$, then $\langle x \rvert \subseteq \langle x' \rvert$. Clearly 
+$\langle x \rvert \subseteq \langle x \rvert$, so $\rho(x, x)$ must hold, and $\rho$ must be reflexive. Next, if $\langle x \rvert \subseteq \langle x' \rvert$ and $\langle x' \rvert \subseteq \langle x'' \rvert$,
+then $\langle x \rvert \subseteq \langle x'' \rvert$, so $\rho(x, x'), \rho(x', x'' ) \implies \rho(x, x'')$, and so $\rho$ is transitive. Finally, $\rho$ must be weakly antisymmetric, since if 
+$\langle x \rvert \subseteq \langle x' \rvert$ and $\langle x' \rvert \subseteq \langle x \rvert$, then $\langle x \rvert = \langle x' \rvert$. Thus $\rho$ must be an order relation.
+
+
+\section{Problem 21}
+
+\textbf{Solution } Suppose $\rho \in \text{Rel}_2(X)$ and $\leq \implies \rho$. This means that if $\langle x \rvert \subseteq \langle x' \rvert$, then $\rho(x, x')$ holds. But $\subseteq$ is an
+order relation, so then $\rho$ must also be an order relation.
+
+\section{Problem 22} 
+
+\textbf{Solution } Suppose $\rho \in \text{Rel}_2(X)$ and $\rho \implies \geq$. This means that if $\rho(x, x')$, then $\lvert x \rangle \subseteq \lvert x' \rangle$. Clearly 
+$\lvert x \rangle \subseteq \lvert x \rangle$, so $\rho(x, x)$ must hold, and $\rho$ must be reflexive. Next, if $\lvert x \rangle \subseteq \lvert x' \rangle$ and $\lvert x' \rangle \subseteq \lvert x'' \rangle$,
+then $\lvert x \rangle \subseteq \lvert x'' \rangle$, so $\rho(x, x'), \rho(x', x'' ) \implies \rho(x, x'')$, and so $\rho$ is transitive. Finally, $\rho$ must be weakly antisymmetric, since if 
+$\lvert x \rangle \subseteq \lvert x' \rangle$ and $\lvert x' \rangle \subseteq \lvert x \rangle$, then $\langle x \rvert = \langle x' \rvert$. Thus $\rho$ must be an order relation.
+
+Similarly, if $\geq \implies \rho$, then since $\geq$ is an order relation, $\rho$ must be an order relation as well.
+\end{document}

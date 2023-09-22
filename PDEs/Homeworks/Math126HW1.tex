@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{leftindex}
+
+
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 126 Homework 1}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{Solution } Suppose $f_n$ converges to $f$ uniformly in $C([0, 1])$. Then $ \| f_n - f\| \rightarrow 0$ as $n \rightarrow \infty$, so:
+
+\begin{align*}
+    \left | \int_0^1 f_n(x)dx - \int_0^1 f(x)dx      \right | & \leq \int_0^1 | f_n(x) - f(x)| dx \\
+    & \leq \int_0^1 \| f_n(x) - f(x) \| dx \\
+    &= \| f_n(x) - f(x) \| 
+\end{align*} which goes to zero as $n \rightarrow \infty$, so the order of limit and integration can be swapped if $f_n \rightarrow f$ uniformly. For a counterexample 
+when $f_n \rightarrow f$ pointwise, consider the sequence of piecewise continous functions on $[0, 1]$
+
+\begin{equation*}
+    f_n = \begin{cases}
+            n^2 x & 0  \leq x \leq \frac{1}{2n} \\
+
+            -n^2 x + n  & \frac{1}{2n} < x \leq \frac{1}{n} \\
+
+            0 &  \frac{1}{n} < x \leq 1
+        
+        \end{cases}
+\end{equation*}
+
+Then $f_n \rightarrow 0$ pointwise on $[0, 1]$. But for all $n$:
+
+\[\int_0^1 f_n(x)dx = \int_0^{1/2n} n^2x dx + \int_{1/2n}^{1/n} -n^2 x + n dx = \frac{1}{8}\]
+
+But 
+\[\int_0^1 f(x) dx = \int_0^1 0dx = 0\] and thus
+\[ \lim_{n \rightarrow \infty} \int_0^1 f_n(x) dx = \frac{1}{8} \neq 0 = \int_0^1 f(x) dx = \int_0^1 \lim_{n\rightarrow \infty} f_n (x) dx\] 
+and thus the order of limits and integration cannot be swapped when $f_n \rightarrow f$ pointwise.
+
+\section{Problem 2}  
+\textbf{Solution } Clearly $C_0(\R^n) \subset C(\R ^n)$ is a subsapce, since if $f_1, f_2 \in C_0(\R^n)$ and $c_1, c_2 \in \R$. Then
+\[ \lim_{|x| \rightarrow \infty}c_1 f_1 + c_2 f_2  = c_1 \lim_{|x| \rightarrow \infty} f_1  + c_2 \lim_{|x| \rightarrow \infty} f_2 = 0\] so $C_0(\R^n)$
+is closed under linear combinations. Obviously, the zero function is in $C_0(\R^n)$. All that remains to show is that the uniform limit of a sequence $f_n$ in $C_0(\R^n)$
+is also in $C_0(\R^n)$. 
+
+To this end, first note that if a sequence $f_n \rightarrow f$ uniformly with $f_n$ continuous, then $f$ is also continuous. Thus all that remains is to show that
+\( \lim_{|x| \rightarrow \infty} f(x) = 0  \). Fix $\epsilon > 0$. Since $f_n(x) \rightarrow 0$, for each $n$ there is a corresponding constant $a_n$ such that if $|x| > a_n$, then
+$|f_n(x)| < \epsilon /2 $. Let $a = \sup \{a_1, a_2, \ldots\}$.  
+
+Next, since $f_n \rightarrow f$ uniformly, there is $N \in \N$ such that for all $n > N$, $ \| f - f_n \| < \epsilon/2$. So for all $ x > a$
+
+\begin{align*}
+    | f(x) | &= | f(x) - f_n(x) + f_n(x) | \\
+    & \leq | f(x) - f_n(x) | + |f_n(x) | \\
+    & \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+    & \leq \epsilon
+\end{align*} 
+So for any $\epsilon$, there is a constant $a$ such that $x > a \rightarrow f(x) < \epsilon$, so 
+\[ \lim_{n \rightarrow \infty} f(x) = 0\] and $C_0(\R^n)$ is a closed subspace of $C(\R^n)$. 
+
+\section{Problem 3}
+
+\textbf{Solution} Let $u: [0, T  ) \to \R^n$ be a solution of the ODE 
+\begin{equation*}
+    \begin{cases}
+        u' = F(u) \\
+        u(0) = u_0
+    \end{cases}
+\end{equation*}
+ where $F : \R^n \to R^n$ is a globally Lipschitz function with constant Lipschitz constant $L$. Then, for $t \in [0, T)$,  by the Fundamental Theorem of Calculus:
+\begin{align*}
+u(t) - u(0) = \int_0^t u'(s) ds &= \int_0^t F(u(s))ds \\
+&= \int_0^t F(u(s)) + F(u(0)) - F(u(0)) ds \\
+&= F(u_0)t + \int_0^t F(u(s) - F(u(0))) ds \\
+\end{align*} Taking the absolute value of both sides and using the Lipschitz condition gives:
+\[|u(t) - u_0| \leq T |F(u_0)| + L \int_0^t |u(s) - u_0  |ds \] 
+
+By Gronwall's inequality, the integral in the right hand side of the above expression is bounded, and thus $u$ is bounded on $[0,  T)$. Since $T$ was arbitrary, the solution $u$ is bounded for all $T < \infty$, and thus not maximal. Thus $u$ exists for all time. 
+
+\end{document}

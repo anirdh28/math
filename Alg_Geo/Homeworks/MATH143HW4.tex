@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\newcommand{\Aff}{\mathbb{A}}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 143 Homework 4}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{a. } \textbf{Solution } Let $R$ be an integral domain, and let the inclusion map $\iota : R \to \text{Frac}(R)$ be the map that sends $a \mapsto a/1$. 
+This is injective, since if $\iota(a) = \iota(b)$, then $a /1 = b/1 $ and thus $a = b$.
+
+\textbf{b. } \textbf{Solution } Let $K$ be a field, and $\phi : R \to K$ be a ring homomorphism. Consider the map $\beta : \text{Frac}(R) \to K$, which sends 
+$a/b \mapsto \phi(a)\phi(b)^{-1}$. Then, if we first send $a \mapsto a/1$, then send $a/1 \mapsto \phi(a)\phi(1)^{-1}$. But $phi(1)$ must equal $1$ in a ring homomorphism
+and so we have $\beta(a/1) = \phi(a)$ which implies that $\phi = \beta \circ \iota$
+
+\section{Problem 2}
+\textbf{a. } \textbf{Solution} A ring homomorphism is injective if and only if its kernel is $\{0\}.$ Furthermore, the kernel of a homomorphism is an ideal. Since the only ideals
+of a field $k$ are $\{0\}$ and $k$ itself, there are only two possibilities for the kernel of the homomorphism, and thus two possibilities for the homomorphism itself. 
+When $\ker \varphi = k$, then $\varphi$ is the zero map, and when $\ker \varphi = \{0\}$, $\varphi$ is injective.
+
+\textbf{b. } \textbf{Solution} No, there cannot be such a map. Notice that since $k[y]$ is a domain, $k(y)$ is a field, and thus we have a surjective map from a ring to a field, say $\phi : k[x_1, \ldots, x_n] \to k(y)$.
+Since $\phi$ is surjective, we have $k[x_1, \ldots, x_n] / \ker \phi \cong k(y)$. But if a ring mod an ideal is a field, that ideal must be maximal, and Weak Nullstellensatz 3 tells us 
+that if $m$ is maximal, then $k[x_1, \ldots, x_n] / m$ is a finite extension of $k$. But this is a contradiction, since $k(y)$ is not a finite extension. Thus, no such map can exist. 
+
+\section{Problem 3}
+\textbf{a. } \textbf{Solution } Let $k$ be a field, and let $f(x) \in k[x]$ be a polynomial of degree $n > 0$. Consider the map $\phi : k[x] \to k[x] / \langle f \rangle$. To show
+$S = \{\phi(1), \phi(x), \ldots \phi(x^{n-1})\}$ is a basis for $k[x] / \langle f \rangle$ over $k$, it suffices to show that $S$ is linearly independent, and $S$ spans $k[x] / \langle f \rangle$.
+To this end, suppose $a(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1} = 0$ in $k[x] / \langle f \rangle$. This means that $f | a$, which implies $a_i = 0$ since any nonzero multiple of $f$ must have 
+degree greater than $f$. Thus $S$ is linearly independent. Now, let $b(x) \in k[x]$. By the Euclidian algorithm, we can write $b(x) = f(x)q(x) + r(x)$, with $\deg r  < \deg f$. But then 
+by definition, $\phi(r) = \phi(f)$, and $\phi(r) \in \text{span } S$, so $\phi(g) \in \text{span } S$ and $S$ spans $k[x] / \langle f \rangle$. Thus $S$ is a basis for $k[x] / \langle f \rangle$.
+
+\textbf{b. } \textbf{Solution } In part \textbf{a}, we took the quotient by a degree $d$ polynomial to obtain a $d$-dimensional $k$ vector space. Now we have a collection of $d^2$ monomials,
+with a degree $d$ monomial in $x$ and a degree $d$ monomial in $y$, so the quotient $k[x,y] / I$ is a $d^2$ dimensional vector space.
+
+\section{Problem 4}
+\textbf{Solution } First suppose we only have two points $P_1$ and $P_2$. Then a polynomial $f$ such that $f(P_1)=1 $ and $f(P_2)=0$ is given by:
+\[ f(x) = \frac{x - P_2}{P_1 - P_2} \] Similarly, we have 
+\[  g(x) = \frac{x - P_1}{P_2 - P_1}\] satisfies $g(P_1) = 0$ and $g(P_2) = 1$ Now suppose we have $F_{ij}$ such that $F_{ij}(P_i) = 0$ and $F_{ij}(P_j) = 1$. 
+Then the product $\prod_{i \neq j}$ is $0$ for all $P_i$ when $i \neq j$ and $1$ on $P_j$. Thus the final polynomial is:
+
+\[ F_{ij} = \prod_{i \neq j} \frac{x - P_i}{P_j - P_i} \]
+
+\section{Problem 5} \textbf{a. } \textbf{Solution }Let $X \subset \Aff^n$, $Y \subset \Aff^m$, and $Z \subset \Aff^r$ be algebraic sets, and $\phi : X \to Y$ and $\psi : Y \to Z$ be polynomial maps.  
+Then for all $P \in X $, $P' \in Y$, there are polynomials $f_1, \ldots, f_m$, $g_1 ,\ldots , g_r$ such that $\phi(P) = (f_1(P), \ldots, f_m(P))$ and $\psi(P') = (g_1(P'), \ldots g_r(P'))$
+Then $\psi \circ \phi$ is the map that sends $P \mapsto (g_1(f_1(P), \ldots f_m(P)), \ldots, g_r(f_1(P), \ldots f_m(P)))$. Since each $g_i$ and $f_j$ are polynomials, the compositions
+$g_i (f_j )$ is also a polynomial, so $\psi \circ \phi$ is also a polynomial map.
+
+
+\textbf{b. } \textbf{Solution } The pullback map $(\psi \circ \phi)^* : \Gamma(Z) \to \Gamma(X)$ which sends $g \mapsto g \circ \psi \circ \phi $ for $g \in \Gamma(Z)$. But this
+is the same as first starting with the pullback map $\psi^* : \Gamma(Z) \to \Gamma(y)$, which sends $g \mapsto g \circ \psi$, and then applying the pullback $\phi^* : \Gamma(Y) \to \Gamma(X)$
+which maps $g \circ \psi \mapsto g \circ \psi \circ \phi$. Thus $(\psi \circ \phi)^* = \phi^* \circ \psi^*$ 
+
+\end{document}

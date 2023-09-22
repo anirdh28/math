@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{leftindex}
+
+
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 174 Homework 2}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1.2.ii}
+\textbf{Solution } \\
+\textbf{i. } Suppose $f: x \to y$ is split epic in $C$. Then there is an arrow $g: y \to x$ such that $fg = id_y$. Given $h: c \to y \in Mor(c, y)$, one can construct an arrow $hg : c \to x \in Mor(c, x)$
+such that this diagram commutes:
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJ4Il0sWzIsMCwieSJdLFsyLDIsImMiXSxbMCwxLCJmIiwwLHsiY3VydmUiOi0xfV0sWzIsMSwiaCIsMl0sWzEsMCwiZyIsMix7ImN1cnZlIjotMX1dLFsyLDAsImcgXFxjaXJjIGgiXV0=
+\[\begin{tikzcd}
+	x && y \\
+	\\
+	&& c
+	\arrow["f", curve={height=-6pt}, from=1-1, to=1-3]
+	\arrow["h"', from=3-3, to=1-3]
+	\arrow["g"', curve={height=-6pt}, from=1-3, to=1-1]
+	\arrow["{g \circ h = k}", dashed, from=3-3, to=1-1]
+\end{tikzcd}\]
+
+So for any $h \in Mor(c, y)$, the map $\tau: Mor(c, x) \to Mor(c, y)$, $k \mapsto f \circ k$ is surjective, since if we are given $h \in Mor(c, y)$, we can always find a map $k$ such that
+$h = f k$. On the other hand, suppose $\tau: Mor(c, x) \to Mor(c, y)$ is surjective. Then for every $c \in C$ and every  $h \in Mor(c, y)$, there is $k \in Mor(c, x)$ such that $f k = h$. 
+Since this holds for every $c \in C$, taking $c = y$ gives $h = id_y : y \to y$ and $ k: y \to x$ such that $fk = id_y$. 
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJ4Il0sWzMsMCwieSJdLFs0LDAsInkiXSxbMSwyLCJpZCBfeSJdLFswLDEsImYiLDAseyJjdXJ2ZSI6LTF9XSxbMSwwLCJrIiwwLHsiY3VydmUiOi0xfV1d
+\[\begin{tikzcd}
+	x &&& y & y
+	\arrow["{id _y}", from=1-4, to=1-5]
+	\arrow["f", curve={height=-6pt}, from=1-1, to=1-4]
+	\arrow["k", curve={height=-6pt}, from=1-4, to=1-1]
+\end{tikzcd}\]
+
+Thus $f$ is split epic, and $f$ is split epic if and only if
+the post composition map $Mor(c, x) \to Mor(c, y)$ is surjective. \\
+
+
+
+\textbf{ii. } Flipping the arrows in the two diagrams above gives two new diagrams:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4Il0sWzIsMCwieSJdLFsyLDIsImMiXSxbNSwwXSxbMCwxLCJmIiwwLHsiY3VydmUiOi0xfV0sWzIsMSwiaCIsMl0sWzEsMCwiZyIsMix7ImN1cnZlIjotMX1dLFsyLDAsImcgXFxjaXJjIGgiXV0=
+\[\begin{tikzcd}
+	x && y &&& {} \\
+	\\
+	&& c
+	\arrow["f", curve={height=-6pt}, from=1-1, to=1-3]
+	\arrow["{k \circ g}"', from=1-3, to=3-3]
+	\arrow["g"', curve={height=-6pt}, from=1-3, to=1-1]
+	\arrow["k", from=1-1, to=3-3]
+\end{tikzcd}\] and 
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJ4Il0sWzUsMCwieSJdLFswLDAsIngiXSxbMCwyLCJpZF94Il0sWzAsMSwiZiIsMCx7ImN1cnZlIjotMX1dLFsxLDAsImciLDAseyJjdXJ2ZSI6LTF9XV0=
+\[\begin{tikzcd}
+	x && x &&& y
+	\arrow["{id_x}", from=1-3, to=1-1]
+	\arrow["f", curve={height=-6pt}, from=1-3, to=1-6]
+	\arrow["g", curve={height=-6pt}, from=1-6, to=1-3]
+\end{tikzcd}\] The first diagram shows how a given a left inverse to $f$ or the fact that $f$ is split monic, every arrow $k \in Mor(x, c)$ can be written as the pre-composition $f \circ gk$.
+On the other hand, if the pre-composition map is surjective, taking $c=x$ gives the second diagram and a left inverse for $f$, thus showing that $f$ is split monic.
+
+\section{Exercise 1.2.iii}
+
+\textbf{Solution}
+
+\textbf{i. } Suppose $f: x \to y$ and $g: y \to z$ are monic. And consider $gf: x \to z$ with $h_1, h_2 : x \to z$ as well. If $h_1 gf = h_2 gf$, then by associativity and and the monicity of $f$
+$h_1 g = h_2 g$. Then again by the monicity of $g$, $h_1 = h_2$, so $gf$ is monic as well. 
+
+\textbf{ii. } Suppose $f: x \to y$ and $g: y \to z$ exist such that $gf$ is monic. Then, if $h_1 gf = h_2 gf$, $h_1 = h_2$. But clearly if $h_1 = h_2$, then $h_1 g = h_2 g$, and so $f$ 
+must be monic as well. 
+
+\textbf{i'. } Applying the argument of \textbf{i} in the opposite category, and using the fact that a split monic morphism in $C$ is split epic in $C^{op}$ gives the desired result.
+
+\textbf{ii'. } Applying the argument of \textbf{ii} in the opposite category, and using the fact that a split monic morphism in $C$ is split epic in $C^{op}$ gives the desired result.
+
+
+\section{Exercise 1.3.i}
+
+\textbf{Solution }A functor $F : BG \to BH$ is just a group homomorphism $\phi : G \to H$. Both $BG$ and $BH$ both only have one object, so they trivially must be mapped to eachother. The morphisms of $BG$ and $BH$ are the 
+elements of $G$ and $H$ respectively, and by functoriality we have for $a, b \in Mor(BG)$, $F(ab) = F(a)F(b)$, which is the same as the homomorphism requirement $\phi(ab) = \phi(a)\phi(b)$. Similarly, since 
+homomorphims map identities to identities, $F(e_G)$ = $e_H$, so thus a functor between two delooping groups is just a group homomorphism between the two groups. 
+
+
+
+
+\end{document}

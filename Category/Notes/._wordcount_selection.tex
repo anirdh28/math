@@ -1,0 +1,17 @@
+Intuitively, we want to talk about morphisms between functors. Fix two categories $C$ and $D$, and let $S: C \to D$ and $T: tC \to D$ be functors. 
+A natural transformation $\tau: S \dotarrow T$ is a function which assigns to each object $c$ of $C$ an arrow $\tau_c = \tau c : Sc \to Tc$ of $D$ such that 
+every arrow $f: c \to c'$ in $C$ yields a commutative diagram 
+
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJjIl0sWzAsMiwiYyciXSxbMiwwLCJTYyJdLFsyLDIsIlNjJyJdLFs0LDIsIlRjJyJdLFs0LDAsIlRjIl0sWzAsMSwiZiJdLFsyLDMsIlNmIiwyXSxbMiw1LCJcXHRhdSBjIl0sWzUsNCwiVGYiXSxbMyw0LCJcXHRhdSBjJyIsMl1d
+\[\begin{tikzcd}
+	c && Sc && Tc \\
+	\\
+	{c'} && {Sc'} && {Tc'}
+	\arrow["f", from=1-1, to=3-1]
+	\arrow["Sf"', from=1-3, to=3-3]
+	\arrow["{\tau c}", from=1-3, to=1-5]
+	\arrow["Tf", from=1-5, to=3-5]
+	\arrow["{\tau c'}"', from=3-3, to=3-5]
+\end{tikzcd}\]
+
+When such a diagram exists, we say that $\tau_c : Sc \to Tc$ is natural in $c$. The functions $\tau a, \tau b, \tau c$ are called the components of the natural transformation $\tau$.

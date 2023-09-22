@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{leftindex}
+
+
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\partial}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 126 Homework 2}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{Solution } The transport equation 
+\[ \begin{cases}
+    \D _t u + 2 \D _x u = 0 \\
+    u(0, x) = u_0(x)
+\end{cases}\]
+is in canonical form, so we can proceed with the method of characteristics. Furthermore, $b(x,t) = 0$ for this problem, so the characteristics are given by $x_t = x - 2t$. Using the 
+initial condition $u(0, x) = u_0(x)$ implies the solution is given by $u(t, x) = u_0(x-2t)$ Since $u_0(x)$ is only defined for $x \leq 0$, we must have $x - 2t \leq 0$ which implies $x \leq 2t$
+and $x \leq 0$
+\section{Problem 2}
+\textbf{Solution } The method of characteristics gives the following equation for characteristics:
+\[\frac{dy}{dx} = -\frac{y}{x}\] which gives characteristrics of the form $x^2 + y^2 = c_1$. Then, this gives the following equation for $u$:
+
+\[ \frac{du}{dy} = -x \] which gives the relation $uy - \frac{x^3}{3} = c_2$. Since $u$ is constant along the characteristics, we have that the solution $u$ satisfies 
+\[ uy - \frac{x^3}{3} = F(x^2 + y^2) \] for an aribitrary function $F$, Plugging in the initial condition $u(x, 0) = 0$ gives 
+\[ -\frac{x^3}{3} = F(x^2) \] so this implies that $F(t) = -\frac{t^{3/2}}{3}$. Then, putting it all together,
+\[u(x, y) = \frac{1}{3y} \left( x^3 + (x^2 + y^2)^{3/2 }  \right) \] This solution is defined everywhere except for the $x$-axis, or when $y = 0$
+
+\section{Problem 3}
+\textbf{Solution} This is Burger's equation, with initial data 
+\[ u(t=0, x) = u_0(x) = \begin{cases}
+    1 & x < 0 \\
+    1-x & x \in [0,1 ] \\
+    0 & x > 1
+
+\end{cases}
+    \] So we have the following system of characteristic ODE's
+
+    \[ \begin{cases}
+        \dot{x} = 0 & x(0) = x_0 \\
+        \dot{u} = 0 & u(0) = u_0(x_0)
+    \end{cases}\]
+
+    Now all that remains is to invert the map $x_0 \to x_0 + tu_0(x_0)$, so $u = u_0(x - ut)$. When $x < 0$, $u_0(x) = 1$, so the map becomes $x_0 \to x_0 + t$, which implies $u = 1$ when $x < t$.
+    Next, if $0 \leq x \leq 1$, then $u_0(x) = 1-x$, so $u = 1-(x-ut)$, so $u = \frac{x-1}{t-1}$ for $t \leq x \leq 1$. Finally, if $x > 1$, then $u_0(x) = 0$, so $u = 0$ here as well. Thus the 
+    solution $u(x, t)$ is given by:
+
+    \[
+        \begin{cases}
+            1 & x < t \\
+            \frac{x-1}{t-1} & t \leq x \leq 1 \\
+            0 & x > 1
+        \end{cases}
+    \]
+
+    Thus, a Lipschitz solution only exists on the time interval $0 \leq t < 1$
+\end{document}

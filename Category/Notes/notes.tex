@@ -1,0 +1,51 @@
+\documentclass{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{leftindex}
+
+\newcommand{\catC}{\mathcal{C}}
+\newcommand{\catD}{\mathcal{D}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}}
+\usepackage{graphicx,newtxtext,newtxmath}
+\newcommand{\dotarrow}{% to be used in math mode...
+   \mathrel{\ooalign{\hss\raise.65ex\hbox{\scalebox{1.25}{\normalfont .}}%
+   \kern0.35ex\hss\cr$\longrightarrow$}}}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\title{Notes on Category Theory}
+\author{Aniruddh V.}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\part{Main Characters - The Basic Objects of Category Theory}
+
+\chapter{Introduction}
+\chapter{Categories}
+\chapter{Functors}
+\chapter{Natural Transformations}
+
+\include{naturaltransform.tex}
+
+
+\part{Constructions on Categories}
+
+\part{Universals and Limits}
+
+
+\end{document}

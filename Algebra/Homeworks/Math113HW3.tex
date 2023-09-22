@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{mathrsfs}
+
+\newcommand{\id}{\text{id}}
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=0.75in
+}
+
+\title{Math 113 Homework 3}
+\author{Aniruddh V.}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 16}
+
+\textbf{Solution } We have the following commutative diagram: 
+
+% https://q.uiver.app/#q=WzAsNixbNCwwLCJYXzEiXSxbMiwwLCJZXzEiXSxbMCwwLCJaXzEiXSxbMCwyLCJaXzIiXSxbMiwyLCJZXzIiXSxbNCwyLCJYXzIiXSxbMCw1LCJcXGdhbW1hIl0sWzUsNCwiXFxjaGlfMiJdLFs0LDMsIlxccGhpXzIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzIsMywiXFxhbHBoYSAiLDJdLFswLDEsIlxcY2hpXzEiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwyLCJcXHBoaV8xIiwyXV0=
+\[\begin{tikzcd}
+	{Z_1} && {Y_1} && {X_1} \\
+	\\
+	{Z_2} && {Y_2} && {X_2}
+	\arrow["\gamma", from=1-5, to=3-5]
+	\arrow["{\chi_2}", from=3-5, to=3-3]
+	\arrow["{\phi_2}", tail, from=3-3, to=3-1]
+	\arrow["{\alpha }"', from=1-1, to=3-1]
+	\arrow["{\chi_1}"', two heads, from=1-5, to=1-3]
+	\arrow["{\phi_1}"', from=1-3, to=1-1]
+\end{tikzcd}\]
+
+Since $\chi_1$ is injective, it has a left inverse $\chi_1^{-1}$ such that $\chi_1^{-1} \circ \chi_1 = id_{X_1}$. Similarly, since $\phi_2$ is surjective, it has a right inverse $\phi_2^{-1}$
+such that $\phi_2 \circ \phi_2^{-1} = id_{Z_2}$. 
+
+Now suppose there are $\beta_1$ and $\beta_2$ such that the diagram below commutes. 
+
+% https://q.uiver.app/#q=WzAsNixbNCwwLCJYXzEiXSxbMiwwLCJZXzEiXSxbMCwwLCJaXzEiXSxbMCwyLCJaXzIiXSxbMiwyLCJZXzIiXSxbNCwyLCJYXzIiXSxbMCw1LCJcXGdhbW1hIl0sWzUsNCwiXFxjaGlfMiJdLFs0LDMsIlxccGhpXzIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzIsMywiXFxhbHBoYSAiLDJdLFswLDEsIlxcY2hpXzEiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMSwyLCJcXHBoaV8xIiwyXSxbMSw0LCJcXGJldGFfMSIsMSx7ImN1cnZlIjozLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSw0LCJcXGJldGFfMiIsMSx7ImN1cnZlIjotMywic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	{Z_1} && {Y_1} && {X_1} \\
+	\\
+	{Z_2} && {Y_2} && {X_2}
+	\arrow["\gamma", from=1-5, to=3-5]
+	\arrow["{\chi_2}", from=3-5, to=3-3]
+	\arrow["{\phi_2}", tail, from=3-3, to=3-1]
+	\arrow["{\alpha }"', from=1-1, to=3-1]
+	\arrow["{\chi_1}"', two heads, from=1-5, to=1-3]
+	\arrow["{\phi_1}"', from=1-3, to=1-1]
+	\arrow["{\beta_1}"{description}, curve={height=18pt}, dashed, from=1-3, to=3-3]
+	\arrow["{\beta_2}"{description}, curve={height=-18pt}, dashed, from=1-3, to=3-3]
+\end{tikzcd}\]
+
+With the inverses added in, the diagram looks as follows:
+
+% https://q.uiver.app/#q=WzAsNixbNCwwLCJYXzEiXSxbMiwwLCJZXzEiXSxbMCwwLCJaXzEiXSxbMCwyLCJaXzIiXSxbMiwyLCJZXzIiXSxbNCwyLCJYXzIiXSxbMCw1LCJcXGdhbW1hIl0sWzUsNCwiXFxjaGlfMiJdLFs0LDMsIlxccGhpXzIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzIsMywiXFxhbHBoYSAiLDJdLFsxLDIsIlxccGhpXzEiLDJdLFsxLDQsIlxcYmV0YV8xIiwxLHsiY3VydmUiOjMsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDQsIlxcYmV0YV8yIiwxLHsiY3VydmUiOi0zLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw0LCJcXHBoaV8yXnstMX0iLDIseyJjdXJ2ZSI6Mywic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMSwiXFxjaGlfMSIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDAsIlxcY2hpXzFeey0xfSIsMCx7ImN1cnZlIjotMywic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	{Z_1} && {Y_1} && {X_1} \\
+	\\
+	{Z_2} && {Y_2} && {X_2}
+	\arrow["\gamma", from=1-5, to=3-5]
+	\arrow["{\chi_2}", from=3-5, to=3-3]
+	\arrow["{\phi_2}", tail, from=3-3, to=3-1]
+	\arrow["{\alpha }"', from=1-1, to=3-1]
+	\arrow["{\phi_1}"', from=1-3, to=1-1]
+	\arrow["{\beta_1}"{description}, curve={height=18pt}, dashed, from=1-3, to=3-3]
+	\arrow["{\beta_2}"{description}, curve={height=-18pt}, dashed, from=1-3, to=3-3]
+	\arrow["{\phi_2^{-1}}"', curve={height=18pt}, dashed, from=3-1, to=3-3]
+	\arrow["{\chi_1}"', two heads, from=1-5, to=1-3]
+	\arrow["{\chi_1^{-1}}", curve={height=-18pt}, dashed, from=1-3, to=1-5]
+\end{tikzcd}\]
+From these diagrams we can read off the following relations: $\alpha \circ \phi_1 = \phi_2 \circ \beta_1$ and $\beta_2 \circ \chi_1 = \chi_2 \circ \gamma$. Now using applying the left and right inverses
+gives $\beta_1 = \phi_2^{-1} \circ \alpha \circ \phi_1$ and $\beta_2 = \chi_2 \circ \gamma \circ \chi_1^{-1}$. But by the commutativity of the first diagram, we have 
+$\alpha \circ \phi_1 \circ \chi_1 = \phi_2 \circ \chi_2 \circ \gamma$, and applying inverses gives $ \phi_2^{-1} \circ \alpha \circ \phi_1 = \chi_2 \circ \gamma \circ \chi_1^{-1} $. But 
+then we have 
+\[ \beta_1 = \phi_2^{-1} \circ \alpha \circ \phi_1 = \chi_2 \circ \gamma \circ \chi_1^{-1} = \beta_2 \] so $\beta_1 = \beta_2 \coloneqq \beta$ is unique, as desired.
+
+\section{Exercise 20}
+
+
+\textbf{Solution } Suppose $f^* B \subseteq A$. Then, by definition, if $x \in X$ such that $f(x) \in B$, then $x \in A$, so $B \subseteq f_* A$. But if $x \in f_* A$, then $x \not\in f_*(X \setminus A)$, so 
+$x \in Y \setminus f_* (X \setminus A) = f_! A$. On the other hand, suppose $ B \subseteq f_! A$. Then for all $x \in B$, $x \in  Y \setminus f_* (X \setminus A)$, so $x \not \in f_* (X \setminus A)$. Thus $x \in f_* A$ which means
+$f^* B \subseteq A$. Thus $f^* B \subseteq A$ if and only if $B \subseteq f_! A$
+
+
+\section{Exercise 23} \textbf{Solution} The functions $(\id _X)_*$, $(\id_X)^*$ and $(\id_X)_!$ are all clearly mappings from $\mathscr{P}X \to \mathscr{P}X$, so it only remains to show that the assignments of all three functions
+are equal to the assignments on $\mathscr{P}X$. By the definition of $f_*$ and $f^*$, we obviously have $(\id_X)^* = \id_{\mathscr{P}X}$ and $(\id_X)_* = \id_{\mathscr{P}X}$. By definition, we have $(\id_X)_! A = X \setminus
+	(\id_X)_* (X \ A) = A$, so $(\id_X)_! = \id_{\mathscr{P}X}$
+
+\section{Exercise 28}
+\textbf{Solution } Let $f :X \to Y $ be a function, with $\mathscr{A} \subset \mathscr{P}X$ a family of subsets of $X$, and $\mathscr{B} \subset \mathscr{P}Y$ a family
+of subsets of $Y$. Let $y \in f_* ( \cup \mathscr{A} )$. Then there is $x \in \cup \mathscr{A}$ such that $f(x) = y$, so $y \in \cup f_{**} \mathscr{A}$. Thus we have
+ $f_* ( \cup \mathscr{A} ) \subseteq \cup f_{**} \mathscr{A}$. Now suppose $y \in \cup f_{**} \mathscr{A}$. Then $y \in A$ for some $A \in \mathscr{A}$, so $y \in 
+ f_*(\cup  \mathscr{A})$. Thus $f_* (\cup \mathscr{A}) = \cup f_{**} \mathscr{A}$. This can be represented in the following commutative diagram:
+
+ % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7UH1cXG1hdGhzY3J7UH1YIl0sWzAsMiwiXFxtYXRoc2Nye1B9WCJdLFsyLDAsIlxcbWF0aHNjcntQfVxcbWF0aHNjcntQfVkiXSxbMiwyLCJcXG1hdGhzY3J7UH1ZIl0sWzAsMiwiZl97Kip9Il0sWzIsMywiXFxiaWdjdXAiXSxbMSwzLCJmXyoiLDJdLFswLDEsIlxcYmlnY3VwIiwyXV0=
+\[\begin{tikzcd}
+	{\mathscr{P}\mathscr{P}X} && {\mathscr{P}\mathscr{P}Y} \\
+	\\
+	{\mathscr{P}X} && {\mathscr{P}Y}
+	\arrow["{f_{**}}", from=1-1, to=1-3]
+	\arrow["\bigcup", from=1-3, to=3-3]
+	\arrow["{f_*}"', from=3-1, to=3-3]
+	\arrow["\bigcup"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+Now suppose $x \in f^* (\cup \mathscr{B})$. Then there is $y \in \cup \mathscr{B}$ such that $f(x) = y$. But $y \in B \in \mathscr{B}$ we also have $x \in \cup {f^*}_* \mathscr{B}$.
+Thus we have $ f^* (\cup \mathscr{B}) \subseteq \cup {f^*}_* \mathscr{B} $. On the other hand, suppose $x \in \cup {f^*}_* \mathscr{B}$. Then $x \in B$ for some $B \in \mathscr{B}$, so we 
+also have $x \in f^* (\cup \mathscr{B} )$. Thus $f^* (\cup \mathscr{B} ) = \cup {f^*}_* \mathscr{B}$. This can be represented in the following commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7UH1cXG1hdGhzY3J7UH1ZIl0sWzAsMiwiXFxtYXRoc2Nye1B9WSJdLFsyLDAsIlxcbWF0aHNjcntQfVxcbWF0aHNjcntQfVgiXSxbMiwyLCJcXG1hdGhzY3J7UH1YIl0sWzAsMiwie2ZeKn1fKiJdLFsyLDMsIlxcYmlnY3VwIl0sWzEsMywiZl4qIiwyXSxbMCwxLCJcXGJpZ2N1cCIsMl1d
+\[\begin{tikzcd}
+	{\mathscr{P}\mathscr{P}Y} && {\mathscr{P}\mathscr{P}X} \\
+	\\
+	{\mathscr{P}Y} && {\mathscr{P}X}
+	\arrow["{{f^*}_*}", from=1-1, to=1-3]
+	\arrow["\bigcup", from=1-3, to=3-3]
+	\arrow["{f^*}"', from=3-1, to=3-3]
+	\arrow["\bigcup"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+\section{Exercise 29} \textbf{Solution } Let $x \in f^* (\cap \mathscr{B})$. Then for all $B \in \mathscr{B}$, there is $y \in B \in \mathscr{B}$ such that $y = f(x)$. But then 
+$x \in {f^*}_* \mathscr{B}$, so $x \in \cap {f^*}_* \mathscr{B}$. Thus $ f^* (\cap \mathscr{B}) \subseteq \cap {f^*}_* \mathscr{B} $ Now suppose $x \in \cap {f^*}_* \mathscr{B}$. Then
+there is $y = f(x)$ such that $y \in \cap \mathscr{B}$, so $x \in f^* (\cap \mathscr{B})$. Thus $f^* (\cap \mathscr{B}) = \cap {f^*}_* \mathscr{B}$. This is represented in the following 
+commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7UH1cXG1hdGhzY3J7UH1ZIl0sWzAsMiwiXFxtYXRoc2Nye1B9WSJdLFsyLDAsIlxcbWF0aHNjcntQfVxcbWF0aHNjcntQfVgiXSxbMiwyLCJcXG1hdGhzY3J7UH1YIl0sWzAsMiwie2ZeKn1fKiJdLFsyLDMsIlxcYmlnY2FwIl0sWzEsMywiZl4qIiwyXSxbMCwxLCJcXGJpZ2NhcCIsMl1d
+\[\begin{tikzcd}
+	{\mathscr{P}\mathscr{P}Y} && {\mathscr{P}\mathscr{P}X} \\
+	\\
+	{\mathscr{P}Y} && {\mathscr{P}X}
+	\arrow["{{f^*}_*}", from=1-1, to=1-3]
+	\arrow["\bigcap", from=1-3, to=3-3]
+	\arrow["{f^*}"', from=3-1, to=3-3]
+	\arrow["\bigcap"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+Next, let $y \in f_! (\cap \mathscr{A})$. Then for all $A \in \mathscr{A}$, $y \in f_! A$, so $y \in \cap f_{!*} \mathscr{A}$. Thus $f_! (\cap \mathscr{A}) \subseteq \cap f_{!*} \mathscr{A} $.
+Now, let $y \in f_{!*} \mathscr{A}$. Then for all $A \in \mathscr{A}$, $y \in f_! A$. Thus $y \in f_! (\cap \mathscr{A}  )$, and $ f_! (\cap \mathscr{A}  ) =  \cap f_{!*} \mathscr{A}$.
+This can be represented in the following commutative diagram:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7UH1cXG1hdGhzY3J7UH1YIl0sWzAsMiwiXFxtYXRoc2Nye1B9WCJdLFsyLDAsIlxcbWF0aHNjcntQfVxcbWF0aHNjcntQfVkiXSxbMiwyLCJcXG1hdGhzY3J7UH1ZIl0sWzAsMiwie2ZfeyEqfX0iXSxbMiwzLCJcXGJpZ2NhcCJdLFsxLDMsImZfISIsMl0sWzAsMSwiXFxiaWdjYXAiLDJdXQ==
+\[\begin{tikzcd}
+	{\mathscr{P}\mathscr{P}X} && {\mathscr{P}\mathscr{P}Y} \\
+	\\
+	{\mathscr{P}X} && {\mathscr{P}Y}
+	\arrow["{{f_{!*}}}", from=1-1, to=1-3]
+	\arrow["\bigcap", from=1-3, to=3-3]
+	\arrow["{f_!}"', from=3-1, to=3-3]
+	\arrow["\bigcap"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+\section{Exercise 30}
+
+\textbf{Solution} Let $y \in f_* (\cap \mathscr{A})$. Then for all $A \in \mathscr{A}$, $y \in f_* A$, so $y \in \cap f_{**} \mathscr{A}$. Thus $ f_* (\cap \mathscr{A}) \subseteq \cap f_{**} \mathscr{A} $.
+
+Next, let  $y \in f_! (\cup \mathscr{A})$. Then there is an $A \in \mathscr{A}$ such that $y \in f_! A$, so $y \in \cup f_{!*} \mathscr{A}$. Thus $ f_! (\cap \mathscr{A}) \subseteq \cap f_{!*} \mathscr{A} $.
+
+\section{Exercise 31}
+
+\textbf{Solution} Let $(A, \cdot)$ be a binary algebraic structure with an associative binary operation. Let $\lambda_a : b \mapsto ab$ be the left multiplication function. Then we have
+\[ \lambda_{ab} = \lambda_{ab} (x) = (ab)x = a(bx) = \lambda_a ( \lambda_b (x) ) = \lambda_a \circ \lambda_b \] so left multiplication is a homomorphism of binary algebraic structures. On the other hand, suppose 
+left multiplication was a homomorphism of binary algebraic structures. Then this implies $\lambda_{ab} = \lambda_a \circ \lambda_b$. But this implies $\lambda_{ab}(x) = \lambda_a \circ \lambda_b (x)$, or 
+$(ab)x = a(bx)$. So the binary algebraic structure is associative. Thus, a binary associative structure is associative if and only if left mutiplication is a homomorphism.
+ 
+\end{document}
